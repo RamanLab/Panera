@@ -1,2 +1,2 @@
 # Panera
-MATLAB repository to construct pan-genus metabolic models (PGMM)
+MATLAB repository to reconstruct pan-genus metabolic models (PGMM)
