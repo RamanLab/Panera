@@ -14,10 +14,10 @@ Reconstruction of PGMM from species-specific GSMMs of a selected genus can be pe
 
 - The biomass reaction for the pan-genera model is formulated as the linear combination of biomass reactions of individual species in the genus: 
 
-$$ v_{panBiomass} =  \sum_{i = 1}^{n} v^{i}_{bio}*s_{i}   $$
+$ v_{panBiomass} =  \sum_{i = 1}^{n} v_{bio}^{i}*s_{i}   $$
 
 where $v_{panBiomass}$ is the biomass flux of the pan-genera model (Objective function), n is the number of species in the genus, 
-$v^{i}_{bio}$ is the biomass flux of the $i^{th}$ species and $s_{i}$ is the coefficient for $i^{th}$ species, which implies the relative abundance or proportion of the microbial species in a community. The $s_{i}$ values can be adjusted to study the influence of a particular species in a genus. The reactions and metabolites associated with the ‘panBiomass’ and species biomass reactions are incorporated using biomass reaction and metabolite database. The default values of coefficients of species biomass ($s_{i}$) will be set to $\frac{1}{n}$. The default setting establishes an equal contribution from each species, and the coefficients can be adjusted to explore the distinct impact of a species.  
+$v_{bio}^{i}$ is the biomass flux of the $i^{th}$ species and $s_{i}$ is the coefficient for $i^{th}$ species, which implies the relative abundance or proportion of the microbial species in a community. The $s_{i}$ values can be adjusted to study the influence of a particular species in a genus. The reactions and metabolites associated with the ‘panBiomass’ and species biomass reactions are incorporated using biomass reaction and metabolite database. The default values of coefficients of species biomass ($s_{i}$) will be set to $\frac{1}{n}$. The default setting establishes an equal contribution from each species, and the coefficients can be adjusted to explore the distinct impact of a species.  
 - Duplicate reactions or metabolites and reactions/metabolites involved in futile cycles are removed from the PGMM if the removal does not impact the growth of the model.
 - The refined pan-genus model is examined for growth by optimising the model with biomass as an objective while constraining to a provided media condition. 
 
