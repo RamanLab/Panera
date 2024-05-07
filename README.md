@@ -14,7 +14,7 @@ Reconstruction of PGMM from species-specific GSMMs of a selected genus can be pe
 
 - The biomass reaction for the pan-genera model is formulated as the linear combination of biomass reactions of individual species in the genus: 
 
-$ v_{panBiomass} =  \sum_{i = 1}^{n} v_{bio}^{i}*s_{i}   $$
+$$ v_{panBiomass} =  \sum_{i = 1}^{n} v_{bio}^{i}*s_{i}   $$
 
 where $v_{panBiomass}$ is the biomass flux of the pan-genera model (Objective function), n is the number of species in the genus, 
 $v_{bio}^{i}$ is the biomass flux of the $i^{th}$ species and $s_{i}$ is the coefficient for $i^{th}$ species, which implies the relative abundance or proportion of the microbial species in a community. The $s_{i}$ values can be adjusted to study the influence of a particular species in a genus. The reactions and metabolites associated with the ‘panBiomass’ and species biomass reactions are incorporated using biomass reaction and metabolite database. The default values of coefficients of species biomass ($s_{i}$) will be set to $\frac{1}{n}$. The default setting establishes an equal contribution from each species, and the coefficients can be adjusted to explore the distinct impact of a species.  
@@ -25,5 +25,6 @@ $v_{bio}^{i}$ is the biomass flux of the $i^{th}$ species and $s_{i}$ is the coe
 
 - After PGMM refinement, a “reaction-species matrix”, a binary matrix representing whether the reaction is present (1) or absent (0) for an individual species, is combined as a field (‘rxnPresenceMat’) with the model.
 - An ‘spList‘ field is incorporated into the model. Both ‘rxn-species matrix’ and ‘spList’ along with normalised ‘species probability vector’ will help filter the reactions to include in PGMM.
+
 PGMM can be customised for a user-defined species composition using two key variables: (i) ‘species probability vector’, a vector of length n, a user-defined vector to reflect the estimated abundances of species in a community; and (ii) ‘rxn-species matrix’, a predefined matrix that encodes the reaction presence within a species. The product of these two variables determines whether the reaction is active in the model. A non-zero product indicates that the corresponding reaction is present in at least one species with a non-zero abundance, allowing it to be active within the model. Furthermore, the species probability vector plays a crucial role in incorporating compositional constraints into the biomass formulation. This formulation, in turn, influences the flux of internal and exchange reactions within the model.  
 
