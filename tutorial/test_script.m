@@ -29,7 +29,7 @@ genusNames = strrep(genusNames,'pan','');
 
 agoraPath = modPath;
 panPath=[pwd filesep '/PanGenusModels_AGORA2'];
-infoFileName = [folderPath 'AGORA2_infoFile.xlsx'];
+infoFileName = [folderPath '/dependencies/AGORA2_infoFile.xlsx'];
 
 if (~exist(dir(panPath)))
     mkdir(panPath)
