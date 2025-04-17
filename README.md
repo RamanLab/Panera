@@ -14,8 +14,9 @@ Our method allows the user to tailor the model using probabilities to their requ
 In case the user does not have any established information and is required to represent the genus, employing equal probabilities for all the species within a genus can be a valid option.
 
 <details>
-<summary> ## Formulation </summary>
+<summary> **Formulation** </summary>
 Reconstruction of PGMM from species-specific GSMMs of a selected genus can be performed using the ‘Panera’ algorithm. The reconstruction pipeline employs three steps to produce a flexible PGMM: (i) Building a unified model from the reactions in all the species of a genus, (ii) Formulating biomass to represent all the species in a genus model, and (iii) Adding fields to accommodate the variation in species composition. The steps included in the PGMM reconstruction are detailed in this section.  
+
 ### Building a unified model from all the species GSMM of a genus 
 - A database of all metabolites and reactions in Virtual Metabolic Human (VMH) models is retrieved from the Demeter pipeline 63. A separate database for the biomass reactions and metabolites of the species models is generated for the reconstruction (Table S1: Information of the species biomass reactions used in the model reconstruction).
 - Reactions from the selected species GSMM models of a specific genus are extracted, and unique reactions (set of all the reactions) are identified to build a model.
@@ -40,4 +41,4 @@ $v_{bio}^{i}$ is the biomass flux of the $i^{th}$ species and $s_{i}$ is the coe
 PGMM can be customised for a user-defined species composition using two key variables: (i) ‘species probability vector’, a vector of length n, a user-defined vector to reflect the estimated abundances of species in a community; and (ii) ‘rxn-species matrix’, a predefined matrix that encodes the reaction presence within a species. The product of these two variables determines whether the reaction is active in the model. A non-zero product indicates that the corresponding reaction is present in at least one species with a non-zero abundance, allowing it to be active within the model. Furthermore, the species probability vector plays a crucial role in incorporating compositional constraints into the biomass formulation. This formulation, in turn, influences the flux of internal and exchange reactions within the model.  
 </details>
 
-<
+
