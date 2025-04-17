@@ -7,14 +7,35 @@ A major limitation of requiring species information to leverage GSMMs for _in-si
 ## Instruction to the users:
 Our method allows the user to tailor the model using probabilities to their requirements. This proposed flexibility caters to two user types:  
 
-- **Users with prior species information:** The potential species configuration for a specific context can be calculated from the previous studies and can be incorporated into the genus models using `customPanModel.m` for _in-silico_ microbial community construction
+- **Users with prior species information:** The potential species configuration for a specific context can be calculated from the previous studies and can be incorporated into the genus models using `customPanModel.m` for _in-silico_ microbial community construction in the [manuscript](https://doi.org/10.1016/j.isci.2024.110358)
   
 - **Users exploring the metabolic potential of a genus:** The method enables the optimisation of species configuration within the genus model for the desired metabolic output. In addition, this approach facilitates the exploration of functional landscape of the whole genus. The adaptability of PGMM allows the users to investigate the extreme species combinations and their functionalities. Monitoring the resulting variation in metabolite production under this synthetic species combination could provide deeper understanding of the genus metabolic capabilities and potentially reveal the hidden metabolic niches in the genus.  
 
 In case the user does not have any established information and is required to represent the genus, employing equal probabilities for all the species within a genus can be a valid option.
 
+## Scripts
+ - **Scripts required for building PGMMs**
+     - `PanGenusModelReconstruction.m`  - Process all the inputs required to build PGMMs
+     - `createPanGenusModel.m` - Builds PGMM for a given genera
+     - `customPanModel.m` - Personalizes the PGMMs using species probability vector
+     - `tutorial_PGMMreconstruction.m` - Quick tutorial on building PGMM for _Escherichia_ and customize the model with random vector
+       
+ - **Data and script to reproduce the tutorial**
+     - `tutorial_script.m` - Script including the abundance data processing, PGMM construction and their application in _in-silico_ microbial community generation
+     - `data` folder contains all the necessary abundance files and diet files for the simulation
+    Running `tutorial_script.m` in MATLAB will help in understanding the PGMM reconstruction and their applicability in hybrid community modelling. 
+  
+ - The folder `dependency` contains all the resource files required for the model building using Panera
+
+## Prerequisites
+  - MATLAB v2020b or later
+  - COBRA Toolbox
+  - IBM CPLEX v12.8 or later
+  - [AGORA](https://www.vmh.life/files/reconstructions/AGORA/1.03/AGORA-1.03-With-Mucins.zip) / [AGORA2](https://www.vmh.life/files/reconstructions/AGORA2) model repositories
+
+
 <details>
-<summary> **Formulation** </summary>
+<summary> <b> Formulation </b> </summary>
 Reconstruction of PGMM from species-specific GSMMs of a selected genus can be performed using the ‘Panera’ algorithm. The reconstruction pipeline employs three steps to produce a flexible PGMM: (i) Building a unified model from the reactions in all the species of a genus, (ii) Formulating biomass to represent all the species in a genus model, and (iii) Adding fields to accommodate the variation in species composition. The steps included in the PGMM reconstruction are detailed in this section.  
 
 ### Building a unified model from all the species GSMM of a genus 
