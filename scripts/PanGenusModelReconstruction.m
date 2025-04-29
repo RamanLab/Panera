@@ -1,16 +1,17 @@
-function panModel = PanGenusModelReconstruction(modelPath,panPath,genusInfo,infoFilePath,dietApplied,dietFilePath)
+function panModel = PanGenusModelReconstruction(modelPath, panPath,genusInfo,infoFilePath,dietApplied,dietFilePath)
 % The function prepares the input to construct the Pan-Genus Metabolic Model (PGMM) from the
 % existing GSMM for a genus
 %
 %   INPUTS:
 %       modelPath  : Path to GSMMs to include in PGMM
-%       panPath     : Path tp save the PanModel
-%       genusInfo   : Information about the genus that needs PGMM
+%       panPath     : Path to save the PGMM
 %
 %   OPTIONAL INPUTS:
+%       genusInfo   : Information about the genus that needs PGMM (default:
+%       All genus in infoFile)
 %       infoFilePath : Path to the information file containing taxonomic information
 %       dietApplied : Binary value indicating whether to incorporate diet
-%       information to the model (default: )
+%       information to the model (default: 0)
 %       dietFilePath : If the diet needs to be applied, path to the diet
 %       file
 %
@@ -21,8 +22,8 @@ function panModel = PanGenusModelReconstruction(modelPath,panPath,genusInfo,info
 
 
 % Check for the genus name and file path for the species information
-if ~exist(infoFilePath)
-    AGORAinfoFile = '/home/indumathi/Desktop/PhD/Research work/Resources/AGORA_infoFile.xlsx';
+if ~exist('infoFilePath', 'var')
+    AGORAinfoFile = 'AGORA_infoFile.xlsx';
     InfoFile = readtable(AGORAinfoFile);
 else
     InfoFile = readtable(infoFilePath);
@@ -31,6 +32,14 @@ if ~isempty(genusInfo)
     genusNames = genusInfo;
 else
     genusNames = unique(InfoFile.Genus);
+end
+
+if ~isempty(dietApplied)
+    dietApplied = 0;
+    dietFilePath = [];
+end
+if (~exist(dir(panPath)))
+    mkdir(panPath)
 end
 
 if ~(isempty(dir(panPath)))
@@ -73,7 +82,7 @@ for i = 1: length(genusNames)
         if ~isempty(dietFilePath)
             Diet = adaptVMHDietToAGORA(dietFilePath,'AGORA');
         else
-            Diet = adaptVMHDietToAGORA('/home/indumathi/Desktop/PhD/Research work/Resources/Diet files/EUdiet','AGORA');
+            Diet = adaptVMHDietToAGORA('EUdiet','AGORA');
         end
     end
 
