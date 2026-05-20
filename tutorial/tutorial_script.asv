@@ -57,9 +57,23 @@ for i = 2:numell(modelNames)
     if startsWith(current_file, 'pan')
         copyfile(fullfile(panPath, current_file), modelsPath);
     else
-        copyfile(fullfile(agoraPath, current_file), modelsPath);
+        
+
+    % If not in Folder 1, check Folder 2 and copy it
+    elseif exist(path_in_folder2, 'file')
+        copyfile(path_in_folder2, destination_folder);
+        fprintf('Copied from Folder 2: %s\n', current_file);
+        
+    % If the file wasn't found in either folder, print a warning
+    else
+        warning('File not found in either folder: %s', current_file);
     end
 end
+% 3. Copy all files from Folder 1 into the destination
+copyfile(fullfile(folder1, '*.*'), destinationFolder);
+
+% 4. Copy all files from Folder 2 into the destination
+copyfile(fullfile(folder2, '*.*'), destinationFolder);
 
 dietFilePath = [folderPath 'tutorial/data/EUdiet'];
 analysisPath = [folderPath 'Analysis/EU/'];
@@ -68,7 +82,7 @@ metaboliteInfo=table2cell(readtable([folderPath 'dependencies/MetaboliteInformat
 computeProfiles = true;
 saveConstrModels = true;
 numWorkers = 12;
-[init, netSecretionFluxes, netUptakeFluxes, Y] = initMgPipe(modelsPath, normAbunFilePath, computeProfiles, 'resPath', resPath, 'dietFilePath', dietFilePath, 'saveConstrModels', saveConstrModels, 'numWorkers', numWorkers);
+[init, netSecretionFluxes, netUptakeFluxes, Y] = initMgPipe(agoraPath, normAbunFilePath, computeProfiles, 'resPath', resPath, 'dietFilePath', dietFilePath, 'saveConstrModels', saveConstrModels, 'numWorkers', numWorkers);
 
 %% Optional Step : Modelling communities using only GSMM for comparison
 
