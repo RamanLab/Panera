@@ -29,7 +29,7 @@ genusNames = strrep(genusNames,'pan','');
 
 agoraPath = modPath;
 panPath=[pwd filesep '/PanGenusModels_AGORA2'];
-infoFileName = [folderPath '/dependencies/AGORA2_infoFile.xlsx'];
+infoFileName = [folderPath 'dependencies/AGORA2_infoFile.xlsx'];
 
 if (~exist(dir(panPath)))
     mkdir(panPath)
@@ -45,7 +45,7 @@ normAbunFilePath = [folderPath 'tutorial/data/normalizedAbundances.txt'];
 modelNames = readcell(normAbunFilePath, 'Range', 'A:A');
 % Creating model path containing both PGMM and GSMM needed for the
 % modelling
-modelsPath = [folderPath filesep 'tutorial/data/Source Models'];
+modelsPath = [folderPath 'tutorial/data/Source Models'];
 if ~exist(modelsPath, 'dir')
     mkdir(modelsPath);
 end
