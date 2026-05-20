@@ -45,7 +45,7 @@ normAbunFilePath = [folderPath 'tutorial/data/normalizedAbundances.txt'];
 modelNames = readcell(normAbunFilePath, 'Range', 'A:A');
 % Creating model path containing both PGMM and GSMM needed for the
 % modelling
-modelsPath = [pwd filesep '/Source Models'];
+modelsPath = [folderPath filesep 'tutorial/data/Source Models'];
 if ~exist(modelsPath, 'dir')
     mkdir(modelsPath);
 end
