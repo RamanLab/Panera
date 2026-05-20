@@ -50,7 +50,7 @@ if ~exist(modelsPath, 'dir')
     mkdir(modelsPath);
 end
 
-for i = 2:numell(modelNames)
+for i = 2:length(modelNames)
     current_file = [modelNames{i},'.mat'];
           
    % Check if the model is pan-genus model or species model
