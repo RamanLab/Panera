@@ -22,7 +22,7 @@ In case the user does not have any established information and is required to re
        
  - **Data and script to reproduce the tutorial**
      - `tutorial_script.m` - Script including the abundance data processing, PGMM construction and their application in _in-silico_ microbial community generation
-     - `data` folder contains all the necessary abundance files and diet files for the simulation.
+     - `data` folder contains all the necessary abundance files and diet files along with the GSMMs and PGMMs needed for the simulation.
        
     Running `tutorial_script.m` in MATLAB will help in understanding the PGMM reconstruction and their applicability in hybrid community modelling. 
   
